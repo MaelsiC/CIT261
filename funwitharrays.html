@@ -3,12 +3,14 @@
   <!-- http://byui-cit.github.io/cit261/examples/arrays.html -->
   <head>
     <meta charset="utf-8" />
-    <title>Fun with Arrays</title>
+    <title id="hello">Hello world!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
 
   <body>
-    <main></main>
+    <main>
+        <h1 id="hello">Hello!</h1>
+    </main>
     <script>
       //open your editor and create an array of colors...5 or so should do it.
       const colors = ['red', 'blue', 'green', 'yellow', 'orange'];
@@ -73,14 +75,41 @@
       ];
 
       //example of for loop to traverse array
+      for(let i = 0; i < colors.length; i++) {
+          console.log(colors[i]);
+      }
 
       //what can we do with an array: console.dir()
+      console.log(colors);
+      console.dir(document.getElementById('hello'));
 
       // forEach
+      colors.forEach(function (item) {
+          console.log(item);
+      });
 
       //example of map: negative numbers
+      const negative = numbers.map(function (item) {
+          return item*-1;
+      });
+      const negativeArrow = numbers.map((item) =>item * -1);
+      console.log(negative);
 
       //example of map with arrow function declaration
+      //declaring functions
+      function doStuff() {
+          return 1+1;
+      }
+
+      const doStuff1 = function() {
+          return 1+1;
+      }
+
+      const doStuff2 = (num) => {
+          return num+num;
+      }
+
+      const doStuff3 = (num) => num+num;
 
       //filter example with indexOf to do a substring search
 
@@ -89,31 +118,35 @@
       console.log(Math.random());
 
       //random numbers: write a function that will return a random number in a range from 0 -> num-1
+      const random = function(num) {
+          return Math.floor(Math.random() * num);
+      }
 
       // closures
-      // function random(num) {
-      //   return function() {
-      //     return Math.floor(Math.random() * num) + 1;
-      //   };
-      // }
+    //   function random(num) {
+    //     return function() {
+    //       return Math.floor(Math.random() * num) + 1;
+    //     };
+    //   }
 
       // const random2 = random;
-      // const die6 = random(6);
-      // const d20 = random(20);
-      // die6();
+    //   const die6 = random(6);
+    //   const d20 = random(20);
+    //   die6();
 
       // //random numbers write a function that will return a random number in a range specified
       // function random(num) {
       //     return Math.floor(Math.random() * num);
       // }
       // write a function to build a random sentence seeded from 3 arrays (color, adj, noun)
-      //   function sentence() {
-      //     //get random color
-      //     let color = colors[random(colors.length())];
-      //     let noun = nouns[random(7)];
-      //     let adj = adjectives[random(7)];
-      //     console.log(adj + ' ' + color + ' ' + noun);
-      //   }
+        function sentence() {
+          //get random color
+          let color = colors[random(colors.length)];
+          let noun = nouns[random(7)];
+          let adj = adjectives[random(7)];
+          console.log(adj + ' ' + color + ' ' + noun);
+        }
+        sentence();
 
       //  this mapping.
       //   const main = document.querySelector('main');
