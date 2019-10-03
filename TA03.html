@@ -121,11 +121,18 @@
       // goto the link above and open the console. Paste the following two lines in.  That will create a list of links in memory that you can reference through the console. Use that list to finish the problem.
       // const category = document.querySelector('.mw-category');
       // const links = Array.from(category.querySelectorAll('a'));
-      // const de = links.map(link => link.textContent)
-      // conts link = textContent.filter(streetName => streetName.includes('de') );
+      // const de = links
+      //.map(link => link.textContent)
+      // .filter(streetName => streetName.includes('de') );
 
       // 7. sort Exercise
       // Sort the people alphabetically by last name
+      const alphabet = people.sort((lastOne, nextOne) => {
+      const [aLast, aFirst] = lastOne.split(', ');
+      const [bLast, bFirst] = nextOne.split(', ');
+      return aLast > bLast ? 1 : -1;
+      });
+      console.log(alphabet);
 
       // 8. Reduce Exercise
       // Sum up the instances of each of these
@@ -145,6 +152,15 @@
         'car',
         'truck'
       ];
+
+      const transportation = data.reduce(function(object, item) {
+      if (!object[item]) {
+        object[item] = 0;
+      }
+      object[item]++;
+      return object;
+       }, {});
+       console.log(transportation);
     </script>
   </body>
 </html>
