@@ -1,0 +1,11 @@
+//'use strict'; activates strict mode.
+
+import { qs } from './ToDos.js';
+import ToDos from './ToDos.js';
+let myVar = 3;
+
+// console.log(url);
+
+const myToDos = new ToDos(qs('#taskList'), 'todo');
+
+console.log(myToDos.key);
