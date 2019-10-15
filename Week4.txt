@@ -1,0 +1,202 @@
+Chapter 8
+
+Form:
+	<form>
+
+"Each form control has an initial value" this is specified in the HTML.
+The values are changed by the input or interaction from the user.
+
+Search example:
+
+<!doctype html>
+<html lang='en'>
+<head>
+	<meta charset='utf-8'>
+	<title>Search</title>
+</head>
+<body>
+	<form name='search' action='/search'>
+		<input name='searchInput'>
+		<button type='submit'>Search</button>
+	</form>
+<script src='main.js'></script>
+</body>
+</html>
+
+The input field takes the information from the user and then the button
+submits the input and passes it through the functions or any interaction
+created from the script file indicated in the code.
+
+Document forms: "returns HTML collection of all forms in the document in 
+the order they appear in the markup."
+
+Common form controls:
+
+<input> fields, including text, passwords, check boxes, radio buttons, 
+and file uploads
+
+<select> menus for drop-down lists of options
+
+<textarea> elements for longer text entry
+
+<button> elements for submitting and resetting forms
+
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Hero Form</title>
+</head>
+<body>
+    <form id='hero'>
+        <label for='heroName'>Name:
+            <input type='text' id='heroName' name='heroName' autofocus placeholder='Your Super Hero Name' maxlength=32>
+        </label>
+        <button type='submit'>Submit</button>
+    </form>
+<script src='main.js'></script>
+</body>
+</html>
+
+JS
+
+const form = document.forms['hero'];
+form.addEventListener('submit', makeHero, false);
+
+//"The event listener will invoke the makeHero() function 
+//when the form is submitted"
+
+function makeHero(event) {
+	
+	event.preventDefault(); //prevent submission of form.
+	const hero = {}; //create empty object
+	hero.name = form.heroName.value; //create name property
+	alert(JSON.stringify(hero)); //convert object to JSON string
+	return hero;
+}
+
+
+Disabling submit button:
+Add disabled attirbute to the <input> element.
+
+Example:
+
+function disableSubmit(event) {
+    if(event.target.value === ''){
+        document.getElementById('submit').disabled = true;
+    } else {
+        document.getElementById('submit').disabled = false;
+    }
+}
+
+apply to heroName field:
+
+form.heroName.addEventListener('keyup',disableSubmit,false);
+
+
+Chapter 12
+
+Object-Oriented Programming:
+
+	* Encapsulation: Inner workings are hidden inside the object
+	and only the essential functionalities are exposed to the end
+	user. The outside world doesn't need to know how it's done.
+	
+	* Polymorphism: Same process can be used for different objects.
+	Objects can share the same method with the ability to override
+	shared methods with specific implementation.
+	
+	* Inheritance: Takes features of one object and then adds new
+	features. Take an object that exists already, inherit all 
+	properties and methods, and then improve the functionality by
+	adding new properties and methods.
+
+
+Prototype use:
+Add new properties and methods after class has been declared.
+
+Mixins:
+Adding properties and methods of some objects to another object without
+inheritance.
+Object.assign() method.
+
+Example:
+
+const a = {};
+const b = {name: 'JavaScript'};
+
+Object.assign(a,b);
+<< {name: 'JavaScript'}
+
+a.name
+<< 'JavaScript'
+
+
+Create own mixin() for deep copy.
+
+function mixin(target,...objects) {
+    for (const object of objects) {   
+    if(typeof object === 'object') {
+        for (const key of Object.keys(object)) {
+            if (typeof object[key] === 'object') {
+            target[key] = Array.isArray(object[key]) ? [] : {};
+            mixin(target[key],object[key]);
+            } else {
+            Object.assign(target,object);  
+            }
+        }
+        }
+    }
+    return target;
+}
+
+
+Chapter 15
+
+Libraries: Piece of code providing methods to make it easier to achieve
+common tasks. 
+
+jQuery: JavaScript library.
+Underscore & Lodash: Utility functions under the namespace _.
+
+"A big advantage of utilizing a popular library is that it will 
+be used by lots of people and thoroughly tested"
+
+"There are some disadvantages to using libraries, however. 
+You need to include the code for the library as well as your own code. 
+This increases the amount of code that needs to be downloaded by a 
+website, which in some cases can cause performance issues"
+
+Ask yourself it the extra work is worth it before using a library.
+
+Module: self-contained piece of code that provides functions and methods
+that can be used in other files and by other modules. Code in a module
+should have one purpose, and group functions with distinct functionality
+together.
+
+Webpack: module bundler that takes all JavaScript files used
+and bundles them together into one file.
+
+
+CODE SANDBOX
+
+6.4
+
+let map = {one: true, two: true, hasOwnProperty: true};
+
+// Fix this call
+console.log(map.hasOwnProperty("one"));
+// → true
+
+object?
+
+console.log(object.hasOwnProperty.call(map, "one"));
+
+oh, prototype, okay so...forgot object has capital 'o'.
+
+console.log(Object.prototype.hasOwnProperty(map, "one"));
+
+I kept forgetting the "call" so it kept outputting false!
+
+console.log(Object.prototype.hasOwnProperty.call(map, "one"));
+
