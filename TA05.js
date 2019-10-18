@@ -49,7 +49,14 @@
           }
 
           buildBackButton() {
-              const  button = document.createElement('button');
+            const button = document.createElement('button');
+            button.innerHTML = '&lt;- All Hikes';
+            button.addEventListener('touchend', () => {
+              this.showHikeList();
+            });
+            button.classList.add('hidden');
+            this.parentElement.before(button);
+            return button;
 
               return button;
           }
@@ -57,6 +64,8 @@
           showHikeList() {
             this.dad.innerHTML = '';
             renderHikeList(hikeList, this.dad);
+            this.addHikeListener();
+            this.button.classList.add('hidden');
           }
 
           showOneHikeFull(hikeName) {
@@ -66,7 +75,7 @@
           addHikeListener() {
               const childrenList = Array.from(this.dad.children);
               childrenList.forEach(child => {
-                  child.addEventListener('touchend', e => {showOneHikeFull(e.currentTarget.dataset.name)});
+                  child.addEventListener('touchend', e => {this.showOneHikeFull(e.currentTarget.dataset.name)});
               });
           }
 
