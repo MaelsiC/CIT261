@@ -1,0 +1,154 @@
+CHAPTER 10 NOTES
+
+Errors:
+	* System error: problem with system or device.
+	* Programmer error: program contains the erros either syntax or logic.
+	* User error: user entered something incorrect.
+
+Exception: "Error that produces a return value that can be used by the
+	program to deal with the error." This helps to track down
+	the error and fix it.
+
+Stack trace: "Sequence of functions or method calls that lead to where the
+	error occurred."
+
+Warnings: this happens when there is an error that doesn't stop the program from running
+	but that it would work better if it was fixed.
+
+"a ninja programmer should ensure that the code they write fails loudly in development 
+so any errors can be identified and fixed quickly"
+Interesting, so don't fail quietly because it would be harder to find the error and fix it,
+it happens often with typos, although they stop the program from functioning at all most of
+the time, it is still hard to find those mistakes, more when there are more than one.
+
+Strict mode: ECMAScript 5 introduced this mode to help with the use of some features.
+This means that those warnings or low errors are now considered high errors and it will
+push the programmer to fix them instead of just leaving them as they are just because
+they still allow the program to run.
+
+Syntax:
+	'use strict';
+
+
+Linting Tools:
+	1. JS Lint
+	2. JS Hint
+	3. ES Lint
+Test the quality of the JavaScript code.
+
+
+Debugging in the browser:
+	
+	Debugging: "finding out where bugs occur in the code and then dealing with them."
+
+a) Alert: alert() method to show a dialog on specific points of the code, this stops the
+	program from running until a click is given so they are breakpoints in the code
+	to make sure it is running smoothly and working correctly.
+
+b) Console: console object that provides a number of methods for logging info and debugging.
+	console.log() is one and this doesn't stop the program from running but it creates
+	breakpoints to show if the program is working in between lines of codes.
+
+c) Debugging tools: modern browsers have debugging tools that allows for breakpoints in the
+	code that will pause the program at those points and show how the code runs till then.
+
+d) Debugger keyword: Creates a breakpoint in the code to pause the execution of the code
+	and allows you to see what the program is working on.
+
+
+Error Objects:
+
+error object when an exception occurs or with the use of a constructor function.
+
+Error objects:
+
+	1- EvalError
+	2- RangeError
+	3- ReferenceError
+	4- SyntaxError
+	5- TypeError
+	6- URIError
+	7- InternalError
+
+Safe error properties:
+
+	* name
+	* message
+	* stack
+
+Throw your own exceptions with the throw statement."This will allow for any problems in your 
+code to be highlighted and dealt with, rather than lurk quietly in the background."
+
+
+If a piece of code will be an exception, wrapt it in a try block.
+if an exception occurs it will pass the error object to a catch block.
+A finally block can be added after the catch block. Always after try or catch.
+
+
+Test-driven Development
+
+Workflow:
+	1. Write tests (that initially fail)
+	2. Write code to pass the tests
+	3. Refactor the code
+	4. Test refactored code
+	5. Write more tests to new features
+
+This is referred to as the "red-green-refactor" cycle of TDD because failed tests are red
+and passed ones are green.
+
+
+Jest: TDD framework. It helps to create and run tests by providing helper methods for 
+common test assertions.
+
+
+class MultiplicatorUnitFailure extends Error {}
+
+function primitiveMultiply(a, b) {
+  if (Math.random() < 0.2) {
+    return a * b;
+  } else {
+    throw new MultiplicatorUnitFailure("Klunk");
+  }
+}
+
+function reliableMultiply(a, b) {
+  for (" ") {
+	try {
+		return (a, b);
+	} catch (e) {
+		if(e MultiplicatorUnitFailure)
+	throw e;
+		}
+	}
+}
+
+console.log(reliableMultiply(8, 8));
+
+======== SyntaxError: missing ; after for-loop initializer
+
+
+class MultiplicatorUnitFailure extends Error {}
+
+function primitiveMultiply(a, b) {
+  if (Math.random() < 0.2) {
+    return a * b;
+  } else {
+    throw new MultiplicatorUnitFailure("Klunk");
+  }
+}
+
+function reliableMultiply(a, b) {
+  for (;;) {
+    try {
+      return primitiveMultiply(a, b);
+    } catch (e) {
+      if (!(e instanceof MultiplicatorUnitFailure))
+        throw e;
+    }
+  }
+}
+
+console.log(reliableMultiply(8, 8));
+
+// => 64
