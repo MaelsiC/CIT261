@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+
+/* General rules */
+* {
+    box-sizing: border-box;
+  }
+
+  /* Small screen rules */
+
+  .question {
+      background-color: lightblue;
+      border: 1 solid black;
+      font-family: 'Anton', sans-serif;
+      padding: 70px 10px;
+  }
+
+  .answers {
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  .mainDiv li {
+      text-decoration: none;
+  }

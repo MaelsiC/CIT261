@@ -53,66 +53,6 @@
             "category": "Entertainment: Film",
             "type": "multiple",
             "difficulty": "easy",
-            "question": "This movie contains the quote, &quot;Houston, we have a problem.&quot;",
-            "correct_answer": "Apollo 13",
-            "incorrect_answers": [
-                "The Right Stuff",
-                "Capricorn One",
-                "Marooned"
-            ]
-        },
-        {
-            "category": "Entertainment: Film",
-            "type": "multiple",
-            "difficulty": "easy",
-            "question": "Who is the main protagonist in, the 1985 film, Back to the Future?",
-            "correct_answer": "Marty McFly",
-            "incorrect_answers": [
-                "Emmett &quot;Doc&quot; Brown",
-                "Biff Tannen",
-                "George McFly"
-            ]
-        },
-        {
-            "category": "Entertainment: Film",
-            "type": "multiple",
-            "difficulty": "easy",
-            "question": "Which actor plays Obi-Wan Kenobi in Star Wars Episodes I-lll?",
-            "correct_answer": "Ewan McGregor",
-            "incorrect_answers": [
-                "Alec Guinness",
-                "Hayden Christensen",
-                "Liam Neeson"
-            ]
-        },
-        {
-            "category": "Entertainment: Film",
-            "type": "multiple",
-            "difficulty": "easy",
-            "question": "In the 2012 film, &quot;The Lorax&quot;, who is the antagonist?",
-            "correct_answer": "Aloysius O&#039;Hare",
-            "incorrect_answers": [
-                "Ted Wiggins",
-                "The Once-Ler",
-                "Grammy Norma"
-            ]
-        },
-        {
-            "category": "Entertainment: Film",
-            "type": "multiple",
-            "difficulty": "easy",
-            "question": "For the film &quot;Raiders of The Lost Ark&quot;, what was Harrison Ford sick with during the filming of the Cairo chase?",
-            "correct_answer": "Dysentery",
-            "incorrect_answers": [
-                "Anemia",
-                "Constipation",
-                "Acid Reflux "
-            ]
-        },
-        {
-            "category": "Entertainment: Film",
-            "type": "multiple",
-            "difficulty": "easy",
             "question": "Which of these Movies was NOT released in 1996?",
             "correct_answer": "Gladiator",
             "incorrect_answers": [
