@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Pizza",
+        "type": "Italian"
+    },
+    {
+        "name": "Hamburger",
+        "type": "American"
+    },
+    {
+        "name": "Apples",
+        "type": "Fruit"
+    }
+]

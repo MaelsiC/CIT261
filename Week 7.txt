@@ -1,0 +1,182 @@
+CHAPTER 11
+
+Function = first-class objects: they can be passed in the same way as every other
+	value. Can have their own properties, methods, and accept other functions
+	as parameters, as well as being returned by other functions.
+
+length property: Returns number of parameters a function has.
+
+call() method: set the value of 'this' inside a function to an object that is
+	provided as first argument.
+
+apply() method: arguments are an array even if there is only one argument.
+
+--You can add your own properties to functions just as you add properties to objects.
+
+description property: describes what the function does.
+
+cache property: stores value of an argument to use again later instead of having to
+	compute the result again.
+
+IIFE: Immediately Invoked Function Expression. anonymous function that is invoked
+	as soon as it is defined.
+
+CAREFUL USING String Mode!
+
+CAREFUL with Callbacks... "Callback hell is the term used to refer to this tangled 
+	mess of code"
+
+Promise: Represents the future result of an asynchronous operation. It helps simplify
+	the process of callbacks and avoids the mess of multiple callbacks.
+
+	1: Resolved - Operation was completed successfully
+	2: Rejected - Operation didn't work as expected, wasn't successfully completed
+		or resulted in an error.
+
+	Created using a constructor function. executor as argument.
+	General layout of a promise:
+
+	const promise = new Promise( (resolve, reject) => {
+    		// initialization code goes here
+    		if (success) {
+        		resolve(value);
+    		} else {
+        		reject(error);
+    		}
+	});
+
+
+
+
+CHAPTER 13 - AJAX = Asynchronous JavaScript and XML
+
+Ajax: Technique that allows web pages to communicate with a server. It enables data
+	to be sent and received in the background. This allows web pages to become
+	dynamic applications instead of remaining as static pages.
+
+Client: Request the resource from a server.
+Server: Processes the request from the client and sends back the response.
+
+Ajax allows JavaScript to ask for data from a server on behalf of the client. The
+requested resources are usually JSON data or small fragments of text or HTML.
+
+A server is required when requesting resources using Ajax. This usually involves a
+	server-side language like PHP, Ruby, Node.js, or .NET.
+
+Asynchronous: When a request for data is sent, the program doesn't have to stop
+	and wait for a response.
+
+JavaScript: Ajax enabled JavaScript to send requests and receive responses from a
+	server.
+
+XML: When Ajax was coined, XML documents were often used to return data. Now JSON are
+	the commonly used files to return the data.
+
+
+FETCH API
+Current living stardard for requesting and sending data asynchronously across a 
+network.
+
+Provides a global fetch() method that only has one mandatory argument, the URL of the
+	resource you want to get.
+
+Basic example:
+
+fetch('https://example.com/data')
+.then( // code that handles the response )
+.catch( // code that runs if the server returns an error )
+
+fetch() method returns a promise that resolves to the response returned from the URL.
+catch statement deals with any errors that may occur.
+
+Example with if block to check if the request was successful:
+
+const url = 'https:example.com/data';
+fetch(url)
+.then((response) => {
+    if(response.ok) {
+        return response;
+    }
+    throw Error(response.statusText);
+})
+.then( response => // do something with response )
+.catch( error => console.log('There was an error!') )
+
+
+Properties of the Response object:
+
+	* headers - contain headers associated with the response
+	* url - string containing the URL of response
+	* redirected - boolean value that specifies if the response is the result
+	* type - string value of 'basic', 'cors', 'error' or 'opaque'.
+		>'basic' is used for a response from the same domain.
+		>'cors' means data was received from a valid cross-origin request 
+			from a different domain.
+		>'opaque' is used for a response received from 'no-cors' request
+			from another domain.
+		>'error' is used when a network error occurs.
+
+redirect() method: used to redirect to another URL.
+
+example:
+
+fetch(url)
+.then( response => response.redirect(newURL)); // redirects to another URL
+.then( // do something else )
+.catch( error => console.log('There was an error: ', error))
+
+
+text() method: takes stream of text from the response, reads it and returns a promise
+	that resolves to a USVSting object that can be treated as a string.
+
+example:
+
+fetch(url)
+.then( response => response.text() ); // transforms the text stream into a JavaScript string
+.then( text => console.log(text) )
+.catch( error => console.log('There was an error: ', error))
+
+
+blob() method: read file of raw data. returns promise that resolves with a blob object.
+
+example:
+
+fetch(url)
+.then( response => response.blob() ); // transforms the data into a blob object
+.then( blob => console.log(blob.type) )
+.catch( error => console.log('There was an error: ', error))
+
+
+JSON
+the most common format for AJAX responses. json() method.
+
+example:
+
+fetch(url)
+.then( response => response.json() ); // transforms the JSON data into a JavaScript object
+.then( data => console.log(Object.entries(data)) )
+.catch( error => console.log('There was an error: ', error))
+
+
+Example of URL, Request and Headers set up before calling the fetch() method:
+
+const url = 'https:example.com/data';
+const headers = new Headers({ 'Content-Type': 'text/plain', 'Accept-Charset' : 'utf-8', 'Accept-Encoding':'gzip,deflate' })
+const request = (url,{
+    headers: headers
+})
+fetch(request)
+.then( function(response) {
+    if(response.ok) {
+        return response;
+    }
+    throw Error(response.statusText);
+})
+.then( response => // do something with response )
+.catch( error => console.log('There was an error!') )
+
+
+example if you want to get the data from the number API:
+
+$.ajax('http://numbersapi.com/random')
+.done(text => outputDiv.innerHTML = text );
