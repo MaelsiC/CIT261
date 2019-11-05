@@ -25,6 +25,8 @@ longProcess().then((results) => {
     console.log('total:', 10 + results);
 });
 
+
+
 //USE API JSON DATA
 const baseUrl = 'https://pokeapi.co/api/v2/';
 

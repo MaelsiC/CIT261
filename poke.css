@@ -1,0 +1,10 @@
+#list {
+    list-style: none;
+}
+
+button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 100vw;
+}
