@@ -1,0 +1,109 @@
+CHAPTER 8
+
+Transforms: CSS3 property transform lets you translate, rotate, scale, and skew
+	elements. It controls aspects of the element's appearance.
+
+The transform functions are applied in the order they're provided.
+
+TRANSFORM FUNCTIONS:
+
+Translation: Allows to move elements left, right, up, or down. With this, you move
+	elements without impacting the flow of the document.
+	translate(x,y) moves an element x from the left, and y from the top.
+
+Scaling: scales an elements by the defined factors horizontally then vertically.
+	You can use scaleX(x) or scaleY(y) functions. They will scale only the
+	horizontal dimensions or only the vertical dimensions respectively.
+	The element's center will stay in the same place as its dimensions change.
+	To override that default behavior, transform-origin property can be included.
+
+Rotation: rotates an element around the point of origin by a specified angle value.
+	Point of origing is the element's center by default. Angles are declared in
+	degrees moving clockwise and negative moving counterclockwise. Values can also
+	be provided in grads, radians. or turns.
+
+Skew: specifies a skew along the x and y axes. If second parameter is ommited, the
+	skew will only occur on the x axis.
+
+THE ORDER OF TRANFORM FUNCTIONS MATTERS!
+the functions are applied according to this order so to change the appearance of the
+element in a specific way you have to write the functions in a specific order, like
+steps for the element to take to get where and how it is supposed to be.
+
+Transitions: allow values of CSS properties to change over time. Simple animations. This
+	allows the control of duration of transition. Helps the page to feel dynamic.
+
+Steps to create simple transition (only CSS):
+
+	1. Declare original state of the element in the default style declaration.
+	2. Declare the final state of your transitioned element.
+	3. Include the transition functions in your default style declaration using the
+		transition properties.
+
+transition-property: defines CSS properties of the element that should be transitioned.
+transition-duration: sets how long the transition will take.
+transition-timing-function: control the pace of the transition in more detail.
+transition-delay: delays the transition if we don't want it to start immediately.
+
+Transitions properties allow for multiple transitions in one call.
+
+Animations: allow to control each step of an animation via keyframes. To animate an element
+	you need to associate the animation to the element. There's the @keyframes rule.
+
+Animation properties:
+	1. animation-name: attach animation to element.
+	2. animation-duration: sets the length of time of the animation.
+	3. animation-timing-function: determines how the animation will progress over its duration.
+	4. animation-iteration-count: defines how many times an animation will play through.
+	5. animation-direction: causes the animation to alternate direction at every iteration.
+	6. animation-delay: how long to wait before the animation starts.
+	7. animation-fill-mode: defines what happens before the first animation iteration begins and after the last animation concludes.
+	8. animation-play-state: defines whether the animation is running or paused.
+
+
+CHAPTER 12
+
+Canvas: draw through JavaScript.
+
+	1. add a canvas element to the page
+	2. give the canvas element an ID to identify within the JavaScript file
+	3. you can add properties like width and height to the element
+
+drawing happens via Canvas JavaScript API.
+
+	4. grab hold of the canvas element by the ID
+	5. set up canvas's context(the place where the drawing is rendered
+	6. obtain drawing context by calling the getContext method
+	7. pass the method the string "2d" for two dimensional drawing
+	8. use strokeStyle for the border of the element if needed
+	9. use fillStyle for the filling
+
+Drawing by creating paths:
+Paths create a blueprint for the lines, arcs, and shapes but they are invisible until you
+	give them a stroke.
+For complex shapes...
+		1. layout the path
+		2. stroke the path
+		3. fill the path
+
+Begin the path with beginPath() method.
+
+To save you can use the API's toDataURL method. This creates a URL with the image created in it.
+Then right click the image at the URL and save it as PNG or JPEG.
+
+You can also manipulate videos with Canvas. Video element, play event.
+
+
+SVG: Scalable Vector Graphics.
+
+Start with the svg tag, give the dimensions of the box, and add shapes with dimensions, fills, and strokes as needed.
+To escape from the amount of code that takes to create a complex shape in svg, you can
+create the image in image editors available like Adobe Illustrator or inkscape.org
+
+Raphaël is a JavaScript library that makes the drawing and animating of SVG easier.
+You can draw using Raphaël. To turn a block like a div into a Raphaël container, simply
+call the Raphael method and pass it the element you want to use.
+Then use the method image to draw the SVG image into the Raphaël container.
+
+I think I would prefer SVG considering you can go back and change it and you cannot do that
+with Canvas.
