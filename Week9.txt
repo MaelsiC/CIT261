@@ -1,0 +1,7 @@
+CHAPTER 9 
+The Window Object
+
+In a browser environment the global object is the window object, meaning the browser window
+that displays the web page.
+
+BOM = Browser Object Model

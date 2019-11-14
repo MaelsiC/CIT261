@@ -8,6 +8,8 @@ window.addEventListener("keypress", e => {
     audio.pause();
     audio.currentTime = 0;
     audio.play();
+    
+
     key.style.transform = 'translateY(10px)';
 
 });
@@ -21,3 +23,4 @@ const keys = Array.from(document.querySelectorAll('.key'));
 keys.forEach(key =>
     key.addEventListener('transitionend', removeTransition)
 );
+
