@@ -4,4 +4,225 @@ The Window Object
 In a browser environment the global object is the window object, meaning the browser window
 that displays the web page.
 
-BOM = Browser Object Model
+BOM = Browser Object Model: Collection of properties and methods that contain info
+	about the browser and computer screen. Properties and methods are available
+	through then window object.
+
+global variables are the ones that can be accessed in all parts of the program.
+doesn't need conts, let, or var keywords.
+
+Dialogs:
+	1.alert(): pause the execution of the program and display a message in a dialog box.
+	2.confirm(): stop execution and display a confirmation dialog, options OK and Cancel.
+	3.prompt(): stop de execution, display a dialog and an input field for the user.
+
+Navigator object: containst info about the browser in use.
+userAgent property: returns info about the browser and operating system in use.
+
+THIS INFO CAN BE MODIFIED BY A USER TO BE MASQUERADE AS A DIFFERENT BROWSER.
+
+window.location property: object that contains information about the URL of the current page.
+	contains properties that give info about fragments of the URL.
+
+href property: returns the full URL as a string.
+
+protocol property: returns description of the protocol used.
+
+host property: returns description of the domain of the URL and the port number.
+
+hostname property: returns description of the domain of URL.
+
+port property: returns description of the port number, but it will be null if the port is 
+	not in the URL.
+
+pathname property: returns path that follows the domain.
+
+search property: returns string (starts with "?") with query string parameters.
+
+hash property: returns a string (starts with "#") with fragment identifier.
+
+origin property: returns protocol and domain where current page originated from.
+
+window.location object methods:
+	* reload(): force a reload of the current page.
+	* assign(): load another resource from a URL provided as a parameter.
+	* replace(): load another resource from URL but page will not be stored in the
+		session history, there is no way back to that page.
+	* toString(): returns a string containing the whole URL.
+
+window.history property: acces info about any visited pages in the current browser session.
+
+window.history.length property: shows how many pages have been visited before the current page.
+
+window.history.go() method: used to go to a specific page, 0 is the current page.
+
+window.history.forward() and window.history.back() methods: navigate forward or backwards
+	by one page respectively.
+
+window.open() method: takes URL of the opened page as its first parameter, the window title
+	as its second parameter, and a list of attributes as the third parameter.
+
+close() method: close a window.
+
+window.moveTo() method: move a window. Takes two parameters (X and Y coordinates) of the screen.
+
+window.resizeTo() method: resize the window. Takes two parameters (width and height) of the
+	window's dimensions.
+
+window.screen object: contains info about the screen the browser is displayed on.
+	Find height and width of the screen in pixels using height and width properties.
+	window.screen.height OR window.screen.width
+
+availHeight and availWidth: find height and width of the screen without the operating system
+	menus.
+
+colorDepth property: find the color bit depth of the user's monitor.
+
+write() method: write a string of text to the page.
+
+Cookies: small files that are saved locally on a user's computer. Store info from requests
+	for later use. Like login info. The stored data is limited to the domain that set
+	them.
+
+HTML5 localStorage API: allows more data than the cookies to be stored.
+
+Create a cookie:
+
+	1. Assign it to JavaScript's "cookie jar" using the document.cookie property
+		document.cookie = 'name=Sue';
+	2. You can add more cookies by assigning them to document.cookie
+	3. Cookie value can change by reassigning it to document.cookie with the same name
+		but different value. 
+			document.cookie = 'name=Sue'; => document.cookie = 'name=Brad';
+	4. To see contents of the cookie jar, enter document.cookie.
+
+split method: break the string into an array containing each name/value pair.
+for of loop: iterate through the array.
+
+Cookies are deleted once a browser sessions ends by default. They can last beyond the browser
+	session by adding "; expires=date" to the end of the cookie when it's set.
+	
+	Example of cookie that expires in one day's time:
+		const expiryDate = new Date();
+		const tomorrow = expiryDate.getTime() + 1000 * 60 * 60 * 24;
+		expiryDate.setTime(tomorrow);
+		
+		document.cookie = `name=Batman; expires=${ expiryDate.toUTCString()}`;
+
+	An alternative is to set the max-age value: takes a value in seconds.
+	
+		document.cookie = 'name=Batman; max-age=86400' // 86400 secs = 1 day
+
+Add string path=/ to the end of the cookie to change the path so that any page in the root
+	directory can read the cookie.
+
+Set the domain by adding domain=domainName to end of the cookie.
+
+Add string secure to end of the cookie to make sure the cookie is only transmitted over a
+	secure HTTPS network.
+
+To remove a cookie, set it to expire at a time in the past.
+
+window.setTimeout() method: accepts a callback to a function as its first parameter and a
+	number of milliseconds as its second parameter. Method returns an integer used as an
+	ID for that specific timeout.
+
+window.clearTimeout() method: cancel the timeout.
+
+window.setInterval() method: works as setTimeout() method but it will repeatedly invoke the
+	callback function.
+
+window.clearInterval() method with variable repeat: stop the setInterval() method.
+
+WATCH OUT WHEN USING THESE METHODS WITH ANY METHOD THAT CONTAINS THE 'THIS' KEYWORD.
+
+Animation: the timeout and interval methods can be used to animate elements.
+
+requestAnimationFrame() method to start animation.
+cancelAnimationFrame() method to stop animation.
+
+
+CHAPTER 14
+HTML5 APIs
+
+data- attribute: embedding data in a web page using custom attributes that are ignored
+	by the browser. Private to page. Sole purpose is to be used by JavaScript program.
+
+Names are up to the developer. Specific format:
+					
+	* Start with data-
+	* Contain only lowercase letters, numbers, hyphens, dots, colons or underscores
+	* Include an optional string value
+
+Example:
+	data-powers = 'flight superSpeed'
+	data-rating = '5'
+	data-dropdown
+	data-user = 'DAZ'
+	data-max-length = '32'
+
+data-dropdown attribute: dropdown menu
+
+HTML5 specifications contains APIs that help get access to hardware.
+
+Web Storage API provides a key-value store on the client's computer, this is like a cookie
+but with less restrictions, more capacity, and easier to use.
+
+Web Storage API differences with Cookies:
+	* Information stored is not shared with the server on every request.
+	* Information is available in multiple windows of the browser.
+	* Storage capacity limit is larger.
+	* Data stored doesn't automatically expire.
+
+localStorage: native object with properties and methods used to store data.
+
+session Storage: data is only saved for the current session.
+
+setItem: save a value locally
+getItem: get saved value
+
+removeItem: remove entry from LS
+delete: remove entry from LS
+
+clear() method: remove everything stored in LS
+
+key: tells the key of the changed item
+newValue: tells new value to which the item changed
+oldValue: tells previous value of the item
+storageArea: tells if it was stored in local or session storage
+
+log information about any changes to the Web Storage:
+
+	addEventListener('storage', (event) => {
+	console.log(`The ${event.key} was updated 
+	from ${event.oldValue} to ${event.newValue} and saved in 
+	${event.storageArea}`) }, false);
+
+Geolocation API: obtain geographical position of the device
+
+navigator.geolocation.getCurrentPosition(youAreHere);
+
+position object: give coordinates of device
+
+	* position.speed: returns ground speed of the device in meters per second
+	* position.altitud: returns an estimate of the device's altitude in meters above
+	* position.heading: returns the direction the device is moving on
+	* position.timestamp: return time that the position information was recorded
+
+clearWatch() method: stop callback. use ID of the watch as argument.
+
+Web workers: allow processes to run in the background adding suppor for concurrency 
+	in JavaScript. To create use the worker() constructor function:
+
+			const worker = new Worker('task.js');
+
+Shared Web Workers: allow lots of different scripts on the same domain access the same
+	worker object.
+
+Service Workers: allows a worker script to run in the background and is able to intercept
+	network requests.
+
+Websocket: protocol that allows two-way communication with a server. PUSH MESSAGING.
+
+Notification: allows showing messages using the system's notifications. Usually a popup but
+	it depends on the operating system.
