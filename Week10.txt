@@ -1,0 +1,84 @@
+Form data validation
+
+Validation helps to make sure that users fill out forms correctly. This way the data submitted
+is the one that the program needs to execute properly.
+
+Client-side validation: validation that occurs in the browser before the data has been submitted to the server.
+
+	* JavaScript: coded using JavaScript
+	* Built-in form validation: uses HTML5 form validation features
+
+Server-side validation: occurs on the server after the data has been submitted.
+
+HTML5 VALIDATION
+Attributes:
+
+	required: means it cannot be left empty or the form won't submit, will show an error, or will be invalid
+	pattern: Regexs. Indicate specific characters or matches in the input
+	length: min or max. Indicate the min or max number of characters
+
+
+JavaScript VALIDATION
+
+Properties:
+	- validationMessage: localized message describing the validation constraints
+	- validity: ValidityState object. Describes validity state of the element
+	- willValidate: Returns true is the element will be validated when form is submitted
+
+Methods
+	- checkValidity(): Returns true if the element's value has no validity problems
+	- HTMLFormElement.reportValidity(): Returns true if the element or its child controls satisfy validation constraints
+	- setCustomValidity(message): Adds a custom error message to the element
+
+
+Using Fetch
+
+Fetch API gives access to parts of HTTP pipeline, requests and responses. Fetch resources
+across the network.
+
+Example:
+const response = await fetch('http://example.com/movies.json');
+const myJson = await response.json();
+console.log(JSON.stringify(myJson));
+
+
+The fetch() method can optionally accept a second parameter, an init object that allows you 
+to control a number of different settings
+
+To cause browsers to send a request with credentials included, even for a cross-origin call, add credentials: 
+'include' to the init the object you pass to the fetch() method
+
+
+A fetch() promise will reject with a TypeError when a network error is encountered or CORS 
+is misconfigured on the server-side
+
+Example:
+try {
+  const response = await fetch('flowers.jpg');
+  if (!response.ok) {
+    throw new Error('Network response was not ok.');
+  }
+  const myBlob = await response.blob();
+  const objectURL = URL.createObjectURL(myBlob);
+  myImage.src = objectURL;
+} catch (error) {
+  console.log('There has been a problem with your fetch operation: ', error.message);
+}
+
+
+Guard values:
+	*none: default.
+	*request: guard for a headers object obtained from a request (Request.headers).
+	*request-no-cors: guard for a headers object obtained from a request created with Request.mode no-cors.
+	*response: guard for a Headers obtained from a response (Response.headers).
+	*immutable: Mostly used for ServiceWorkers; renders a headers object read-only.
+
+Response properties:
+	*Response.status — An integer containing the response status code.
+	*Response.statusText — A string that corresponds to the HTTP status code message
+	*Response.ok — shorthand for checking that status is in the range 200-299 inclusive. This returns a Boolean
+
+
+Fetch API support can be detected by checking for the existence of Headers, Request, 
+Response or fetch() on the Window or Worker scope
+
